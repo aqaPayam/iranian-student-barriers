@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="موانع ادامه تحصیل فارغ‌التحصیلان شریف؛ منابع و وضعیت بررسی"><title>موانع مهاجرت تحصیلی</title><style>*{box-sizing:border-box}body{margin:0;background:#fff;color:#232725;font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:1.9}main{max-width:1150px;margin:48px auto;padding:0 28px 60px}header{margin-bottom:28px}h1{font-size:26px;line-height:1.6;margin:0 0 4px}header p{margin:0;color:#6d736f;font-size:13px}.toolbar{display:flex;align-items:center;gap:18px;margin-bottom:12px}input{font:inherit;width:360px;max-width:100%;border:1px solid #d9dedb;border-radius:6px;padding:8px 12px;background:#fff;color:inherit}input:focus{outline:2px solid #729d8b;outline-offset:2px}#result-count{color:#757b77;font-size:12px;white-space:nowrap}.note{font-size:12px;color:#737974;margin:0 0 20px}table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:right}th{font-size:12px;font-weight:400;color:#757b77;padding:10px 12px;border-bottom:1px solid #cdd5cf;background:#fafbf9}td{vertical-align:top;padding:20px 12px;border-bottom:1px solid #e6eae7}.num-col{width:56px}.source-col{width:190px}.confirm-col{width:170px}.number{color:#8a918c;font-size:13px}h2{font-size:15px;line-height:1.8;margin:0 0 7px}td p{margin:0;font-size:13px;color:#555e58;line-height:2}.status{font-size:12px;display:inline-block;margin-bottom:6px}.has-source{color:#2c6a4d}.partial{color:#876623}.missing{color:#777}.source-links{display:grid;gap:5px}.source-links a{font-size:12px;color:#356b58;text-decoration:none;text-underline-offset:4px}.source-links a:hover{text-decoration:underline}.confirmation{font-size:12px;color:#5f6861}tr:target{background:#f4f8f3}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}#empty{color:#737974;text-align:center;padding:24px}@media(max-width:700px){main{margin:26px auto;padding:0 18px 40px}h1{font-size:22px}.toolbar{gap:10px}input{min-width:0;flex:1}table,tbody{display:block}thead{display:none}tr{display:grid;grid-template-columns:30px minmax(0,1fr);padding:18px 0;border-bottom:1px solid #e0e6e1}td{border:0;padding:0}td.number{grid-row:1 / 4;padding-top:2px}td.content{margin-bottom:12px}td.source,td.confirmation{grid-column:2;margin-top:8px}td.source::before{content:'منبع: ';font-size:12px;color:#737974}td.confirmation::before{content:'تأیید نویسنده: ';color:#737974}h2{font-size:14px}}@media print{main{margin:0;padding:0}.toolbar{display:none}.source-col{width:150px}.confirm-col{width:120px}td{padding:12px 8px}tr{break-inside:avoid}a{color:#222!important}}</style></head>
+<body><main><header><h1>موانع مهاجرت تحصیلی</h1><p>فارغ‌التحصیلان کارشناسی دانشگاه صنعتی شریف</p></header>
+<div class="toolbar"><label class="sr-only" for="search">جست‌وجو</label><input id="search" type="search" placeholder="جست‌وجوی عنوان، کشور یا شماره…" autocomplete="off"><span id="result-count" aria-live="polite"></span></div>
+<p class="note">فهرست در حال بررسی است. منبع ناقص، فقط بخشی از ادعا را پوشش می‌دهد؛ تأیید نویسنده به‌معنای تأیید مستقل نیست.</p>
+<table><thead><tr><th scope="col" class="num-col">ردیف</th><th scope="col">عنوان و توضیح</th><th scope="col" class="source-col">منبع</th><th scope="col" class="confirm-col">تأیید نویسنده</th></tr></thead><tbody id="list"></tbody></table><p id="empty" hidden>موردی پیدا نشد.</p>
+</main><script>const sources={
+  "ets": [
+    "ETS؛ آزمون و ارسال نمره",
+    "https://www.ets.org/iran-testing-update.html"
+  ],
+  "ielts": [
+    "IDP؛ اطلاعیه آیلتس",
+    "https://ielts.idp.com/iran/about/ielts-announcement"
+  ],
+  "usa": [
+    "وزارت خارجه آمریکا",
+    "https://travel.state.gov/content/travel/en/News/visas-news/suspension-of-visa-issuance-to-foreign-nationals-to-protect-the-security-of-the-united-states.html"
+  ],
+  "eth": [
+    "سند بررسی امنیتی ETH",
+    "https://ethz.ch/content/dam/ethz/associates/services/finance-and-controlling/open/Compliance/Exportkontrolle/Englisch/Factsheet_on_the_assessment_of_Master%27s_applications_security_screening.pdf"
+  ],
+  "ljmu": [
+    "صفحه ایران در LJMU",
+    "https://www.ljmu.ac.uk/study/courses/international-entry-requirements/iran"
+  ],
+  "det": [
+    "پشتیبانی آزمون دولینگو",
+    "https://testcenter.zendesk.com/hc/en-us/articles/48404390966925-Is-The-Duolingo-English-Test-available-in-Iran"
+  ],
+  "sweden": [
+    "اطلاعیه سوئد؛ ۷ آوریل ۲۰۲۶",
+    "https://www.swedenabroad.se/globalassets/ambassader/iran-teheran/documents/migration-till-hemsidan_engelska_260407.pdf"
+  ],
+  "germany": [
+    "خدمات محدود سفارت آلمان",
+    "https://teheran.diplo.de/ir-de/2752046-2752046"
+  ],
+  "italy": [
+    "ایتالیا؛ امکان اقدام از کشور ثالث",
+    "https://ambteheran.esteri.it/it/news/dall_ambasciata/2026/03/rilascio-dei-visti-allutenza-iraniana/"
+  ],
+  "internet": [
+    "دیده‌بان حقوق بشر؛ قطعی اینترنت",
+    "https://www.hrw.org/news/2026/01/12/irans-internet-blackout-concealing-atrocities"
+  ],
+  "warinternet": [
+    "Internet Society؛ ژوئن ۲۰۲۵",
+    "https://pulse.internetsociety.org/en/shutdowns/internet-suspended-in-iran-13-june-2025/"
+  ],
+  "flight": [
+    "هشدارهای پرواز EASA",
+    "https://www.easa.europa.eu/en/domains/air-operations/czibs"
+  ],
+  "au": [
+    "دانشگاه آرهوس؛ URIS",
+    "https://medarbejdere.au.dk/en/administration/research-support-and-collaboration/uris"
+  ],
+  "sdu": [
+    "دانشگاه SDU؛ امنیت پژوهش",
+    "https://sdunet.dk/en/servicesider/uris"
+  ],
+  "atas": [
+    "راهنمای رسمی ATAS",
+    "https://www.gov.uk/guidance/academic-technology-approval-scheme"
+  ],
+  "nl": [
+    "دولت هلند؛ تحریم دانش",
+    "https://www.government.nl/faq/secondary-vocational-education-mbo-and-tertiary-higher-education/do-i-need-an-exemption-from-the-knowledge-embargo"
+  ],
+  "australia": [
+    "استرالیا؛ فناوری حساس",
+    "https://www.homeaffairs.gov.au/about-us/our-portfolios/national-security/technology-and-data-security/critical-technology"
+  ],
+  "ausvisa": [
+    "استرالیا؛ ویزای دانشجویی",
+    "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+  ],
+  "strac": [
+    "کانادا؛ پرسش‌های متداول STRAC",
+    "https://www.science.gc.ca/site/science/en/safeguarding-your-research/guidelines-and-tools-implement-research-security/sensitive-technology-research-and-affiliations-concern/frequently-asked-questions-faq-policy-sensitive-technology-research-and-affiliations-concern"
+  ],
+  "nro": [
+    "کانادا؛ فهرست مؤسسات",
+    "https://science.gc.ca/site/science/en/safeguarding-your-research/guidelines-and-tools-implement-research-security/sensitive-technology-research-and-affiliations-concern/named-research-organizations"
+  ],
+  "bill": [
+    "گزارش تغییر متن طرح مقابله با نفوذ",
+    "https://parsi.euronews.com/2026/08/25/iran-foreign-influence-bill-impact-on-education-work-media-and-iranians-abroad"
+  ],
+  "toronto": [
+    "شرایط پذیرش تورنتو",
+    "https://www.sgs.utoronto.ca/future-students/admission-application-requirements/"
+  ],
+  "ubc": [
+    "UBC؛ معافیت هزینه درخواست",
+    "https://www.grad.ubc.ca/faq/3240"
+  ],
+  "wise": [
+    "محدودیت‌های Wise",
+    "https://wise.com/help/articles/2978049/where-can-i-use-wise"
+  ],
+  "loan": [
+    "مناطق پشتیبانی‌نشده Prodigy",
+    "https://support.prodigyfinance.com/hc/en-us/articles/360000134385-Which-regions-aren-t-eligible-for-a-loan"
+  ],
+  "fundde": [
+    "آلمان؛ تمکن و مدارک تحصیل",
+    "https://teheran.diplo.de/ir-de/02-service/merkblatt-studium-2492580"
+  ],
+  "funduk": [
+    "بریتانیا؛ شرایط مالی",
+    "https://www.gov.uk/student-visa/money"
+  ],
+  "github": [
+    "GitHub؛ کنترل‌های تجاری",
+    "https://docs.github.com/en/site-policy/other-site-policies/github-and-trade-controls"
+  ],
+  "women": [
+    "گزارش محدودیت سفر زنان",
+    "https://www.hrw.org/report/2023/07/18/trapped/how-male-guardianship-policies-restrict-womens-travel-and-mobility-middle"
+  ],
+  "transit": [
+    "وزارت خارجه استونی؛ ترانزیت",
+    "https://www.vm.ee/en/consular-visa-and-travel-information/visa-information/application-schengen-visa"
+  ],
+  "canada": [
+    "کانادا؛ آمار عمومی مجوز تحصیل",
+    "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/international-students.html"
+  ],
+  "ubcfee": [
+    "UBC؛ تعرفه درخواست ۲۰۲۶/۲۷",
+    "https://www.grad.ubc.ca/prospective-students/application-admission/online-application-fee"
+  ],
+  "torontofee": [
+    "تورنتو؛ تعرفه درخواست ۲۰۲۶/۲۷",
+    "https://www.sgs.utoronto.ca/future-students/faq/"
+  ],
+  "salary": [
+    "ایران‌تلنت؛ حقوق کارشناسان نرم‌افزار تهران",
+    "https://salary.irantalent.com/salary-report/software-it-infrastructure-expert-salary/"
+  ],
+  "claude": [
+    "Anthropic؛ کشورهای مجاز",
+    "https://www.anthropic.com/supported-countries"
+  ],
+  "remittance": [
+    "OFAC؛ حواله‌های شخصی ایران",
+    "https://ofac.treasury.gov/faqs/243"
+  ]
+};
+const rawRows=[
+  [
+    "محدودیت تافل، GRE و ارسال نمره",
+    "برای افراد دارای اقامت معمول در ایران، ثبت‌نام و پرداخت آزمون حتی در خارج از ایران در دسترس نیست؛ سفر موقت این محدودیت را رفع نمی‌کند. درخواست جدید ارسال نمره قبلی نیز از ۹ سپتامبر ۲۰۲۶ متوقف شده است. این محدودیت اقامت را نباید به همه ایرانیان مقیم خارج تعمیم داد.",
+    "آزمون",
+    "دارد",
+    "تأیید شده",
+    [
+      "ets"
+    ],
+    "۸، ۱۰، ۱۱",
+    "نویسنده"
+  ],
+  [
+    "آیلتس؛ توقف داخل و ابهام خارج از ایران",
+    "برگزاری آیلتس توسط IDP در ایران متوقف شده؛ آخرین آزمون اعلام‌شده ۳۱ ژانویه ۲۰۲۶ است. احتمال محدودیت شرکت خارج از ایران هنوز تأیید نشده و نیازمند بررسی است.",
+    "آزمون",
+    "ناقص",
+    "داخل: بله؛ خارج: با تردید",
+    [
+      "ielts"
+    ],
+    "۹",
+    "نویسنده"
+  ],
+  [
+    "تراول‌بن آمریکا برای مهاجرت تحصیلی",
+    "محدودیت صدور ویزا و ورود، مسیر ادامه تحصیل ایرانیان در آمریکا را مسدود یا محدود کرده است. دامنه حقوقی دقیق در منبع آمده است.",
+    "ویزا و مقصد",
+    "دارد",
+    "تأیید شده",
+    [
+      "usa"
+    ],
+    "۱",
+    "نویسنده"
+  ],
+  [
+    "کانادا؛ نرسیدن به ویزا با وجود پذیرش",
+    "بر اساس مواردی که از آن‌ها اطلاع دارم، در دو سال گذشته غالب و تقریباً همه متقاضیان ایرانیِ دارای پذیرش، ویزا نگرفته‌اند و بررسی‌های امنیتی بسیار طولانی بوده است. نمونه: هشت نفر با پذیرش دکتری تورنتو در سال گذشته نتوانستند بروند؛ امسال هم وضعیت مشابه است. این گزارش شخصی است؛ سال دقیق، علت نرفتن هر فرد و آمار جامع ایرانیان هنوز ثبت نشده است.",
+    "ویزا و مقصد",
+    "ناقص",
+    "تأیید شخصی",
+    [
+      "canada"
+    ],
+    "۲، ۳",
+    "نویسنده"
+  ],
+  [
+    "هزینه‌ها و فرصت‌های ازدست‌رفته بر اثر تأخیر ویزا",
+    "دیر رسیدن ویزا می‌تواند باعث ازدست‌رفتن پذیرش یا فاند، نپذیرفتن تعویق شروع تحصیل (دیفر) و سوخت‌شدن پیش‌پرداخت شهریه، خوابگاه یا رزرو سفر شود. وقوع و میزان زیان به شرایط دانشگاه و پرونده بستگی دارد؛ نمونه‌ها و مدارک هنوز ثبت نشده‌اند.",
+    "پیامدها",
+    "پیدا نشده",
+    "اصل موضوع تأیید شده؛ نمونه‌ها ثبت نشده",
+    [],
+    "۵۵، ۵۷",
+    "پیشنهاد پژوهش"
+  ],
+  [
+    "موانع ویزا و ورود در کشورهای منطقه",
+    "گزارش رد ویزا یا جلوگیری از ورود ایرانیان در امارات، قطر و برخی دیگر از کشورهای عربی و خاورمیانه، از جمله محدودیت‌های مرتبط با جنگ و اثر بر تحصیل در مؤسساتی مانند MBZUAI. ادعای رد همه ایرانیان و ارتباط با جنگ هنوز به تفکیک کشور و تاریخ مستند نشده است.",
+    "ویزا و مقصد",
+    "پیدا نشده",
+    "امارات و قطر: تقریباً مطمئن؛ سایر موارد: مطرح‌شده",
+    [],
+    "۴، ۵",
+    "نویسنده"
+  ],
+  [
+    "سفارت‌های مختل‌شده و محدودیت کشور ثالث",
+    "تعطیلی، جابه‌جایی یا کاهش ظرفیت سفارت‌ها در دوره جنگ مراحل ویزا را مختل کرده است؛ در بعضی موارد سفر به کشور دیگر امکان اقدام یا مصاحبه نمی‌دهد. برای سوئد در ۷ آوریل ۲۰۲۶ و محدودیت‌های آلمان سند داریم. مثال ایتالیا نیازمند تاریخ است: اطلاعیه ۱۶ مارس ۲۰۲۶ آن، اقدام در کشور قابل‌دسترسی با اقامت قانونی و هماهنگی را مجاز می‌داند.",
+    "سفر و ارتباط",
+    "دارد",
+    "بله؛ مثال ایتالیا نیازمند بررسی",
+    [
+      "sweden",
+      "germany",
+      "italy"
+    ],
+    "۱۳، ۱۴",
+    "نویسنده"
+  ],
+  [
+    "قطع اینترنت و مختل‌شدن اپلای",
+    "قطع اینترنت در جنگ و اعتراضات، بررسی ایمیل، ارسال مدارک و مصاحبه را در زمان اپلای مختل می‌کند. بر اساس گزارش‌هایی که دریافت کرده‌ام، بعضی متقاضیان برای دسترسی به اینترنت و مصاحبه از کشور خارج شده‌اند. قطعی‌های ژوئن ۲۰۲۵ و ژانویه ۲۰۲۶ مستند است؛ اثر بر پرونده‌ها و سفرهای اجباری نیازمند ثبت نمونه است.",
+    "سفر و ارتباط",
+    "ناقص",
+    "تأیید شده",
+    [
+      "internet",
+      "warinternet"
+    ],
+    "۱۵، ۱۶، ۱۷",
+    "نویسنده"
+  ],
+  [
+    "اختلال پرواز و دشواری سفر برای آزمون، سفارت و تحصیل",
+    "بسته‌شدن حریم هوایی و لغو یا کمبود پرواز می‌تواند سفر را گران یا متوقف و متقاضی را ناچار به مسیر زمینی کند. مسیر جایگزین ممکن است ویزای ترانزیت و اقامت در کشور ثالث بخواهد. حتی با ویزای صادرشده، نرسیدن به مقصد در مهلت مقرر ممکن است به درخواست دوباره و هزینه تازه منجر شود؛ نمونه موجود آلمان مربوط به شنگن است. جزئیات هر مسیر و هزینه نیازمند بررسی است.",
+    "سفر و ارتباط",
+    "ناقص",
+    "اختلال سفر تأیید شده؛ جزئیات بررسی نشده",
+    [
+      "flight",
+      "transit",
+      "germany"
+    ],
+    "۱۸، ۱۹، ۶۰، ۶۱",
+    "نویسنده"
+  ],
+  [
+    "محدودیت ETH برای سابقه تحصیل در شریف",
+    "بررسی امنیتی برخی رشته‌های ارشد شامل دانشگاه مبدأ، تابعیت یا اقامت و تأمین مالی است و می‌تواند به توصیه رد درخواست منجر شود. سند موجود بن کامل همه شریفی‌ها در همه رشته‌ها را ثابت نمی‌کند.",
+    "دانشگاه و پژوهش",
+    "ناقص",
+    "بله؛ دامنه نیازمند اصلاح",
+    [
+      "eth"
+    ],
+    "۶",
+    "نویسنده"
+  ],
+  [
+    "توقف پذیرش درخواست از ایران در LJMU",
+    "دانشگاه اعلام کرده برای سال تحصیلی ۲۰۲۶/۲۷ درخواست‌های «از ایران» را نمی‌پذیرد. دامنه آن درباره ایرانیان مقیم خارج در این اطلاعیه روشن نیست.",
+    "دانشگاه و پژوهش",
+    "دارد",
+    "تأیید شده",
+    [
+      "ljmu"
+    ],
+    "۷",
+    "نویسنده"
+  ],
+  [
+    "محدودیت آزمون دولینگو",
+    "مرکز پشتیبانی رسمی می‌گوید آزمون در ایران و برای کاربران دارای مدارک هویتی ایرانی در دسترس نیست. وضعیت استفاده از مدرک کشور دیگر باید جدا بررسی شود.",
+    "آزمون",
+    "دارد",
+    "بررسی نشده",
+    [
+      "det"
+    ],
+    "۱۲",
+    "پیشنهاد پژوهش"
+  ],
+  [
+    "سربازی، وثیقه و محدودیت خروج",
+    "مشمولان برای خروج تحصیلی با شروط معافیت، مهلت قانونی و تأمین وثیقه روبه‌رو هستند؛ طولانی‌شدن انتظار ویزا ممکن است با این مهلت‌ها تداخل پیدا کند. رقم مطرح‌شده وثیقه ۲۵۰ میلیون تومان است، اما مبلغ و شرایط روز هنوز مستند نشده‌اند. وثیقه مسدودشده با هزینه غیرقابل‌بازگشت تفاوت دارد.",
+    "موانع داخل ایران",
+    "پیدا نشده",
+    "اصل موضوع تأیید شده؛ جزئیات بررسی نشده",
+    [],
+    "۲۰، ۲۱، ۵۴",
+    "نویسنده"
+  ],
+  [
+    "آزادسازی مدرک و مدارک رسمی",
+    "هزینه و مراحل لغو تعهد آموزش رایگان، دریافت دانشنامه و ریزنمرات لازم برای ادامه تحصیل. تعرفه و شرایط دقیق شریف هنوز باید تکمیل شود.",
+    "موانع داخل ایران",
+    "پیدا نشده",
+    "تأیید شده",
+    [],
+    "۲۲",
+    "نویسنده"
+  ],
+  [
+    "بررسی امنیتی و اداری و کاهش تمایل به جذب ایرانیان",
+    "بررسی‌های امنیتی و HR می‌تواند جذب متقاضی ایرانی را طولانی و پرهزینه کند. بر اساس تجربه شخصی و گزارش‌های دریافتی، این بار اداری گاهی استاد را از جذب منصرف می‌کند. اصل بررسی در دانشگاه‌های مشخص مستند است؛ میزان تأخیر و موارد انصراف به نمونه مکاتبه نیاز دارد.",
+    "دانشگاه و پژوهش",
+    "ناقص",
+    "تجربه شخصی و گزارش دیگران",
+    [
+      "au"
+    ],
+    "۲۳، ۲۴",
+    "نویسنده"
+  ],
+  [
+    "بررسی پیشینه و محدودیت همکاری در دانشگاه‌های دانمارک",
+    "SDU برای برخی استخدام‌های مرتبط با پژوهش حساس، و آرهوس برای استخدام، پذیرش دکتری و میزبانی پژوهشگر از کشورهای مشخص از جمله ایران، بررسی پیشینه دارند. آرهوس همکاری با شریف، شهید بهشتی و مالک‌اشتر را ممنوع اعلام کرده است. اثر این ممنوعیت بر پذیرش فردی و تعمیم آن به همه دانشگاه‌های دانمارک هنوز روشن نیست.",
+    "دانشگاه و پژوهش",
+    "ناقص",
+    "دو دانشگاه تأیید شده؛ تعمیم نامطمئن",
+    [
+      "sdu",
+      "au"
+    ],
+    "۲۵، ۲۶، ۲۷، ۲۸",
+    "نویسنده"
+  ],
+  [
+    "ویزای استرالیا و بررسی فناوری حساس",
+    "در استرالیا برای برخی پرونده‌های ارشد پژوهشی و دکتری، بررسی فناوری حساس و برای بعضی تغییرات رشته یا پژوهش تأیید جدا لازم است. این مقررات عمومی‌اند؛ ادعای سخت‌تر بودن ویزا برای ایرانیان و میزان رد یا تأخیر هنوز داده مشخص ندارد.",
+    "ویزا و مقصد",
+    "ناقص",
+    "نامطمئن",
+    [
+      "australia"
+    ],
+    "۲۹، ۳۴",
+    "نویسنده"
+  ],
+  [
+    "دشواری ویزا و اقامت سوئد",
+    "مشکلات صدور ویزا یا اقامت تحصیلی ایرانیان؛ اختلال خدمات سفارت مستند است اما نرخ رد یا تأخیر مختص ایرانیان در دست نیست.",
+    "ویزا و مقصد",
+    "ناقص",
+    "گزارش غیرمستقیم",
+    [
+      "sweden"
+    ],
+    "۳۰",
+    "نویسنده"
+  ],
+  [
+    "دشواری مجوز تحصیل سنگاپور",
+    "گزارش اولیه درباره دشواری ویزا یا مجوز تحصیل ایرانیان در سنگاپور؛ منبع و پرونده مشخص هنوز نداریم.",
+    "ویزا و مقصد",
+    "پیدا نشده",
+    "گزارش غیرمستقیم",
+    [],
+    "۳۱",
+    "نویسنده"
+  ],
+  [
+    "محدودیت وابستگی و همکاری پژوهشی با شریف در کانادا",
+    "شریف در فهرست مؤسسات مورد نگرانی کانادا است. سیاست STRAC در برخی پژوهش‌های حساس با بودجه فدرال، وابستگی و حمایت جاری و بعضی همکاری‌های انتشار مقاله را محدود می‌کند؛ صرف مدرک قبلی شریف مشمول نیست. اثبات پایان وابستگی ممکن است مدارک بخواهد. اجرای محدودیت فراتر از این دامنه هنوز نیازمند نمونه است.",
+    "دانشگاه و پژوهش",
+    "ناقص",
+    "بررسی نشده",
+    [
+      "nro",
+      "strac"
+    ],
+    "۳۵، ۳۶، ۵۲",
+    "پیشنهاد پژوهش"
+  ],
+  [
+    "طرح محدودکردن همکاری علمی در ایران",
+    "احتمال محدودیت همکاری علمی یا انتشار مقاله با مؤسسات خارجی در طرح مقابله با نفوذ. گزارش‌هایی از تغییر نسخه‌های طرح وجود دارد؛ متن نهایی، وضعیت تصویب و اجرا و ارتباط اختصاصی با شریف روشن نیست.",
+    "موانع داخل ایران",
+    "ناقص",
+    "اصل موضوع مطرح‌شده؛ تصویب نامطمئن",
+    [
+      "bill"
+    ],
+    "۳۷",
+    "نویسنده"
+  ],
+  [
+    "برآورد هزینه اپلای در مقایسه با حقوق در ایران",
+    "برآورد نمونه برای ۱۰ درخواست با تعرفه‌هایی در بازه تورنتو و UBC در ۲۰۲۶/۲۷: فقط هزینه درخواست‌ها حدود ۱٬۳۰۰ تا ۱٬۶۸۳ دلار کانادا است؛ آزمون، ارسال نمره، ترجمه و سفر جداست. برای مقایسه، ایران‌تلنت میانگین دریافتی کارشناسان نرم‌افزار و IT تهران در ۱۴۰۴ را حدود ۴۸ میلیون تومان در ماه گزارش کرده است؛ این میانگین همه ایرانیان یا تازه‌فارغ‌التحصیلان نیست. میانگین ملی حقوق، نرخ ارز هم‌تاریخ و برآورد مجموع هزینه‌ها هنوز باید تکمیل شوند.",
+    "هزینه و پرداخت",
+    "ناقص",
+    "اصل فشار مالی تأیید شده؛ مقایسه عددی در حال تکمیل",
+    [
+      "ubcfee",
+      "torontofee",
+      "salary"
+    ],
+    "۴۰، ۴۱، ۴۶",
+    "نویسنده"
+  ],
+  [
+    "دشواری انتقال پول برای شهریه و هزینه زندگی",
+    "انتقال مستقیم و عادی پول از ایران برای پرداخت شهریه و هزینه زندگی به‌آسانی در دسترس نیست. حتی با داشتن پول، تحصیل با هزینه شخصی با مشکل انتقال آن به خارج و نیاز به واسطه و کارمزد روبه‌رو می‌شود. محدودیت خدماتی مثل Wise مستند است؛ قطع کامل همه مسیرهای انتقال هنوز مستند نشده است.",
+    "هزینه و پرداخت",
+    "ناقص",
+    "اصل دشواری انتقال تأیید شده",
+    [
+      "wise",
+      "fundde"
+    ],
+    "۴۳، ۶۲",
+    "نویسنده"
+  ],
+  [
+    "دسترسی‌نداشتن به برخی وام‌های تحصیل در خارج",
+    "بعضی شرکت‌ها برای تحصیل در دانشگاه‌های مورد تأییدشان وام می‌دهند؛ دانشجو هزینه تحصیل را تأمین و سپس وام را با بهره بازپرداخت می‌کند. Prodigy Finance ساکنان ایران را در فهرست مناطق غیرقابل‌پشتیبانی قرار داده، بنابراین این راه تأمین هزینه برای آن‌ها در دسترس نیست. این محدودیت مخصوص همین وام‌دهنده است و کشورهای متعدد دیگری را هم شامل می‌شود؛ به معنی ممنوعیت همه وام‌ها برای همه ایرانیان نیست.",
+    "هزینه و پرداخت",
+    "دارد",
+    "بررسی نشده",
+    [
+      "loan"
+    ],
+    "۴۴",
+    "پیشنهاد پژوهش"
+  ],
+  [
+    "تحریم، فیلترینگ و دشواری دسترسی به ابزارهای پژوهش و هوش مصنوعی",
+    "تحریم خدمات، فیلترینگ و مشکل پرداخت ارزی، دسترسی به ابزارهایی را که دیگر دانشجویان استفاده می‌کنند دشوار یا ناممکن می‌کند؛ از ابزارهای پژوهش و خدمات ابری تا هوش مصنوعی و اشتراک‌های پولی. برای نمونه، ایران در کشورهای مجاز Anthropic برای استفاده از Claude نیست. کمبود تجهیزات آزمایشگاهی هم این فاصله را بیشتر می‌کند. نمونه‌های فیلترینگ و هزینه دسترسی باید تکمیل شوند؛ وضعیت همه ابزارها یکسان نیست و همه انتقال‌های پول نیز ممنوعیت قانونی ندارند.",
+    "دانشگاه و پژوهش",
+    "ناقص",
+    "اصل دشواری دسترسی تأیید شده؛ مصداق‌ها در حال تکمیل",
+    [
+      "claude",
+      "github",
+      "wise",
+      "remittance"
+    ],
+    "۴۹، ۵۰",
+    "نویسنده"
+  ],
+  [
+    "آیا مشکل ویزا مانع حضور در المپیاد، مسابقه یا کنفرانس می‌شود؟",
+    "آیا دانشجویان ایرانی با وجود راه‌یابی یا دعوت به المپیاد، مسابقه علمی یا کنفرانس، به‌علت رد یا دیر رسیدن ویزا نتوانسته‌اند شرکت کنند؟ این مورد هنوز باید با نام رویداد، کشور، سال و نمونه مشخص تکمیل شود.",
+    "دانشگاه و پژوهش",
+    "پیدا نشده",
+    "نیازمند تکمیل",
+    [],
+    "۵۱",
+    "پیشنهاد پژوهش"
+  ]
+];
+const rows=rawRows.map((r,i)=>({id:i+1,title:r[0],description:r[1],category:r[2],evidence:r[3],confirmation:r[4],sources:r[5],old:r[6],origin:r[7]}));
+</script><script>const fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const norm=s=>String(s).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/ي/g,'ی').replace(/ك/g,'ک').toLowerCase();
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const search=document.getElementById('search');
+function render(){
+ const q=norm(search.value.trim());
+ const visible=rows.filter(r=>!q||(/^\d+$/.test(q)?r.id===Number(q):norm([r.title,r.description,r.category,r.confirmation].join(' ')).includes(q)));
+ document.getElementById('list').innerHTML=visible.map(r=>'<tr id="item-'+r.id+'"><td class="number">'+fa(r.id)+'</td><td class="content"><h2>'+esc(r.title)+'</h2><p>'+esc(r.description)+'</p></td><td class="source"><span class="status '+(r.evidence==='دارد'?'has-source':r.evidence==='ناقص'?'partial':'missing')+'">'+esc(r.evidence)+'</span><div class="source-links">'+r.sources.map(k=>'<a href="'+esc(sources[k][1])+'" target="_blank" rel="noopener noreferrer">'+esc(sources[k][0])+'</a>').join('')+'</div></td><td class="confirmation">'+esc(r.confirmation)+'</td></tr>').join('');
+ document.getElementById('result-count').textContent=q?fa(visible.length)+' از '+fa(rows.length)+' مورد':fa(rows.length)+' مورد';
+ document.getElementById('empty').hidden=visible.length>0;
+}
+search.addEventListener('input',render);render();
+if(/^#item-\d+$/.test(location.hash))document.getElementById(location.hash.slice(1))?.scrollIntoView();
+</script></body></html>
